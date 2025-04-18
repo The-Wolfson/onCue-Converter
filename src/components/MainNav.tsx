@@ -10,8 +10,7 @@ export function MainNav() {
         {
             name: "onCue",
             items: [
-                { name: "Download", href: "/onCue/download" },
-                { name: "Convert", href: "onCue-Converter" },
+                { name: "Convert", href: "/" },
                 { name: "Privacy Policy", href: "/onCue/privacy-policy" },
                 { name: "Feedback", href: "https://bw-studios.notion.site/18e923382aec80fba1c6c5f6ec0c8fec" }
             ]
