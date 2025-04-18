@@ -1,39 +1,43 @@
-// components/MainNav.tsx
-import * as React from "react"
 import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu"
+    NavigationMenu, NavigationMenuContent,
+    NavigationMenuItem,
+    NavigationMenuLink,
+    NavigationMenuList, NavigationMenuTrigger
+} from "@/components/ui/navigation-menu";
 
 export function MainNav() {
-  return (
-    <NavigationMenu className={"p-4"}>
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuLink href="https://the-wolfson.github.io">
-            Home
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>onCue</NavigationMenuTrigger>
-          <NavigationMenuContent>
-              <NavigationMenuLink href="">
-                Download
-              </NavigationMenuLink>
-              <NavigationMenuLink href="/">
-                Convert
-              </NavigationMenuLink>
-              <NavigationMenuLink href={"https://the-wolfson.github.io/onCue/privacy-policy"}>
-                  Privacy Policy
-              </NavigationMenuLink>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
-  )
+    const navGroups = [
+        {
+            name: "onCue",
+            items: [
+                { name: "Download", href: "/onCue/download" },
+                { name: "Convert", href: "onCue-Converter" },
+                { name: "Privacy Policy", href: "/onCue/privacy-policy" },
+                { name: "Feedback", href: "https://bw-studios.notion.site/18e923382aec80fba1c6c5f6ec0c8fec" }
+            ]
+        }
+    ]
+    return (
+        <NavigationMenu>
+            <NavigationMenuList>
+                <NavigationMenuItem>
+                    <NavigationMenuLink href="/">
+                        Home
+                    </NavigationMenuLink>
+                </NavigationMenuItem>
+                {navGroups.map((group) => (
+                    <NavigationMenuItem key={group.name}>
+                        <NavigationMenuTrigger>{group.name}</NavigationMenuTrigger>
+                        <NavigationMenuContent>
+                            {group.items.map((item) => (
+                                <NavigationMenuLink key={item.name} href={item.href}>
+                                    {item.name}
+                                </NavigationMenuLink>
+                            ))}
+                        </NavigationMenuContent>
+                    </NavigationMenuItem>
+                ))}
+            </NavigationMenuList>
+        </NavigationMenu>
+    )
 }
